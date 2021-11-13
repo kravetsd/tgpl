@@ -9,4 +9,5 @@ import (
 func main() {
 	fmt.Println("Hello module")
 	functions.Hellofunc()
+	functions.Hypot()
 }
