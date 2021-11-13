@@ -94,6 +94,11 @@ func ParseFindlinks(url string) {
 		os.Exit(1)
 	}
 
+	if resp.StatusCode != http.StatusOK {
+		fmt.Fprintf(os.Stderr, "statuscode: %v =>  %v\n", url, resp.StatusCode)
+		os.Exit(1)
+	}
+
 	doc, err := html.Parse(resp.Body)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "response parse error: %v\n", err)
