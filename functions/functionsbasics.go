@@ -102,4 +102,6 @@ func ParseFindlinks(url string) {
 	for _, link := range visit(nil, doc) {
 		fmt.Println(link)
 	}
+
+	outline(nil, doc)
 }
