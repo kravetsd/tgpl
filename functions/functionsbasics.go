@@ -85,3 +85,21 @@ func outline(stack []string, n *html.Node) {
 		outline(stack, c)
 	}
 }
+
+func ParseFindlinks(url string) {
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "http.Get: %v\n", err)
+		os.Exit(1)
+	}
+
+	doc, err := html.Parse(resp.Body)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "response parse error: %v\n", err)
+		os.Exit(1)
+	}
+
+	for _, link := range visit(nil, doc) {
+		fmt.Println(link)
+	}
+}

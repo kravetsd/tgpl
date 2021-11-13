@@ -2,6 +2,10 @@ package main
 
 import "github.com/kravetsd/TheGoProgrammingLanguage/functions"
 
+const (
+	url string = "https://golang.org"
+)
+
 func main() {
 	//fmt.Println("Hello module")
 	//functions.Hellofunc()
@@ -10,5 +14,7 @@ func main() {
 
 	//functions.Parsehtml(functions.Fetch("https://golang.org")) it works!
 
-	functions.Outlinecaller(functions.Fetch("https://golang.org"))
+	//functions.Outlinecaller(functions.Fetch("https://golang.org")) it works
+
+	functions.ParseFindlinks(url)
 }
