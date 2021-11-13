@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -21,7 +22,7 @@ func Hypot() {
 
 func HypotRet(a, b, c int, st, ring string, _ float64) (z string) {
 	fmt.Printf("a=%v, b=%v, c=%v\n", a, b, c)
-	z = string(a + b + c)
+	z = strconv.Itoa(a + b + c)
 	return z
 }
 
