@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"golang.org/x/net/html"
 )
@@ -130,4 +131,21 @@ func SimpleHttpGet(url string) (content []string, err error) {
 	}
 
 	return visit(nil, doc), nil
+}
+
+// the next strategy for Error handling is a RETRY:
+
+func Waitforserver(url string) error {
+	const timeout = 1 * time.Minute
+	deadline := time.Now().Add(timeout)
+
+	for tries := 0; time.Now().Before(deadline); tries++ {
+		_, err := http.Get(url)
+		if err == nil {
+			return nil
+		}
+		fmt.Printf("server not responding: %v; ...retrying:", err)
+		time.Sleep(time.Second << uint(tries)) // exponential back-off
+	}
+	return fmt.Errorf("server %s failed to respond after %s", url, timeout)
 }

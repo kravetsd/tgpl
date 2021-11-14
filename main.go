@@ -22,5 +22,8 @@ func main() {
 
 	//functions.ParseFindlinks(url) It works
 
-	fmt.Println(functions.SimpleHttpGet("https://golang.org"))
+	//fmt.Println(functions.SimpleHttpGet("https://golang.org")) it works
+
+	errmes := functions.Waitforserver("https://adsafasdfasfg.org")
+	fmt.Println(errmes.Error())
 }
