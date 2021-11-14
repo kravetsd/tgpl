@@ -1,6 +1,10 @@
 package main
 
-import "github.com/kravetsd/TheGoProgrammingLanguage/functions"
+import (
+	"fmt"
+
+	"github.com/kravetsd/TheGoProgrammingLanguage/functions"
+)
 
 const (
 	url string = "https://golang.org"
@@ -16,5 +20,7 @@ func main() {
 
 	//functions.Outlinecaller(functions.Fetch("https://golang.org")) it works
 
-	functions.ParseFindlinks(url)
+	//functions.ParseFindlinks(url) It works
+
+	fmt.Println(functions.SimpleHttpGet("https://golang.org"))
 }

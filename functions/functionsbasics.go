@@ -111,3 +111,23 @@ func ParseFindlinks(url string) {
 
 	outline(nil, doc)
 }
+
+// Function and error hanling in function: two strategies :
+
+//  "PROPAGATE" strategy:
+
+func SimpleHttpGet(url string) (content []string, err error) {
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	doc, err := html.Parse(resp.Body)
+	resp.Body.Close()
+
+	if err != nil {
+		return nil, fmt.Errorf("parse %s: %v", url, err)
+	}
+
+	return visit(nil, doc), nil
+}
