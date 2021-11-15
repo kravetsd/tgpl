@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/kravetsd/TheGoProgrammingLanguage/basictypes"
 	"github.com/kravetsd/TheGoProgrammingLanguage/functions"
 )
 
@@ -14,7 +15,7 @@ func main() {
 	//fmt.Println("Hello module")
 	//functions.Hellofunc()
 	//functions.Hypot()
-	//fmt.Println(functions.HypotRet(39, 30, 1, "hello", "world", 0.23))
+	fmt.Println(functions.HypotRet(39, 30, 1, "hello", "world", 0.23))
 
 	//functions.Parsehtml(functions.Fetch("https://golang.org")) it works!
 
@@ -24,6 +25,7 @@ func main() {
 
 	//fmt.Println(functions.SimpleHttpGet("https://golang.org")) it works
 
-	errmes := functions.Waitforserver("https://adsafasdfasfg.org")
-	fmt.Println(errmes.Error())
+	//errmes := functions.Waitforserver("https://adsafasdfasfg.org")
+	//fmt.Println(errmes.Error())
+	basictypes.Strs()
 }
