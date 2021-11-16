@@ -66,3 +66,22 @@ func Somestrconversion() {
 	fmt.Printf("%v,%v,%[2]T,%v,%[3]T", len(n), '\n', byte('\n')) //a trick with stri gformatting
 
 }
+
+func basepath(path string) {
+	for i := len(path) - 1; i >= 0; i-- {
+		if path[i] == '/' {
+			path = path[i+1:]
+			fmt.Println(path)
+			break
+		}
+	}
+
+	for i := len(path) - 1; i >= 0; i-- {
+		if path[i] == '.' {
+			path = path[:i]
+			break
+		}
+	}
+
+	fmt.Println(path)
+}
