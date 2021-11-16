@@ -1,11 +1,16 @@
 package basictypes
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const GoUsage = `Go is a tool for managing Go source code.
 Usage:
-go command [arguments]
+go command [arguments] 漢字
 ...`
+
+var r, u, n = 'r', 'u', 'n'
+var b byte = 12
 
 func Strs() {
 	a := "this is a string"
@@ -30,5 +35,31 @@ func Strs() {
 	fmt.Println("this is a raw string example : ", GoUsage)
 
 	fmt.Println("\054")
+
+	// bring some mutability into string
+	st := "this is a string"
+	b := []byte(st)
+	fmt.Println(b)
+	b[0] = 12
+
+	fmt.Println(string(b)) //resulting string
+
+}
+
+func Somestrconversion() {
+	fmt.Println("Hello, playground")
+	fmt.Printf("%T\n", GoUsage)
+	fmt.Printf("%T\n", r)
+	fmt.Printf("%T\n", b)
+	c := byte(r)
+	fmt.Printf("%v\n", string(c))
+
+	stringa := string(r)
+	fmt.Println(stringa)
+
+	newstr := []rune(GoUsage)
+	fmt.Println(newstr)
+	fmt.Println([]byte(GoUsage))
+	fmt.Println(string(newstr))
 
 }
