@@ -62,4 +62,7 @@ func Somestrconversion() {
 	fmt.Println([]byte(GoUsage))
 	fmt.Println(string(newstr))
 
+	n := "\n"
+	fmt.Printf("%v,%v,%[2]T,%v,%[3]T", len(n), '\n', byte('\n')) //a trick with stri gformatting
+
 }
