@@ -1,6 +1,7 @@
 package basictypes
 
 import (
+	"bytes"
 	"fmt"
 )
 
@@ -44,6 +45,8 @@ func Strs() {
 
 	fmt.Println(string(b)) //resulting string
 
+	fmt.Println("converting a slice of integers to string: ", IntsToString([]int{1, 2, 3, 4}))
+
 }
 
 func Somestrconversion() {
@@ -84,4 +87,19 @@ func basepath(path string) {
 	}
 
 	fmt.Println(path)
+}
+
+// converting slice of int to string using bytes package:
+func IntsToString(values []int) string {
+	var buf bytes.Buffer
+	buf.WriteByte('[')
+	for i, val := range values {
+		if i > 0 {
+			buf.WriteString(", ")
+		}
+		fmt.Fprintf(&buf, "%d", val)
+	}
+
+	buf.WriteByte(']')
+	return buf.String()
 }
