@@ -57,3 +57,11 @@ func SliceIntersection() {
 	}
 
 }
+
+func reverse(ir []int) []int {
+	for i, j := 0, len(ir)-1; i < j; i, j = i+1, j-1 {
+		ir[i], ir[j] = ir[j], ir[i]
+	}
+
+	return ir
+}
