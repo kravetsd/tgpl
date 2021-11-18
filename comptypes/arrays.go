@@ -36,7 +36,24 @@ const (
 )
 
 func Cury() {
+	// here is a trick where we assign indices in a random order:
 	symbol := [...]string{USD: "$", EUR: "€", GBP: "£", RUR: "₽", RMB: "¥"}
-	dollar := symbol[USD]
-	fmt.Println(dollar)
+	rubles := symbol[RUR]
+	fmt.Println(RUR, rubles)
+}
+
+func SliceIntersection() {
+	{
+		s := ar[2:]
+		q := ar[1:3]
+		for _, v := range s {
+			for _, val := range q {
+				if v == val {
+					fmt.Printf("%v is in both slices \n", v)
+				}
+			}
+		}
+
+	}
+
 }
