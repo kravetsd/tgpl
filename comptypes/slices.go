@@ -37,3 +37,22 @@ func strtoslice(s string) {
 
 	fmt.Printf("%q", runes)
 }
+
+func appendInt(x []int, y int) ([]int, int, int) {
+	var z []int
+	fmt.Println(cap(z))
+	zlen := len(x) + 1
+	fmt.Println(zlen, cap(x))
+	if zlen <= cap(x) {
+		z = append(x, y)
+	} else {
+		zcap := zlen * 2
+		z = make([]int, zlen, zcap)
+		fmt.Println(cap(z))
+		copy(z, x)
+	}
+
+	z[len(x)] = y
+
+	return z, len(z), cap(z)
+}
