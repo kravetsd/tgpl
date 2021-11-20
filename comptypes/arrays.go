@@ -65,3 +65,11 @@ func reverse(ir []int) []int {
 
 	return ir
 }
+
+func reversep(ir *[5]int) []int {
+	for i, j := 0, len(ir)-1; i < j; i, j = i+1, j-1 {
+		ir[i], ir[j] = ir[j], ir[i]
+	}
+
+	return ir[:]
+}
