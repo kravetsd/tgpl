@@ -56,3 +56,12 @@ func appendInt(x []int, y int) ([]int, int, int) {
 
 	return z, len(z), cap(z)
 }
+
+func reversestr(st string) string {
+	stb := []byte(st)
+	for i, j := 0, len(stb)-1; i < j; i, j = i+1, j-1 {
+		stb[i], stb[j] = stb[j], stb[i]
+	}
+
+	return string(stb)
+}
