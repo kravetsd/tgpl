@@ -25,3 +25,15 @@ func Equality(l, k []int) bool {
 
 	return true
 }
+
+func strtoslice(s string) {
+	rn := []rune(s)
+	fmt.Printf("%q", rn)
+
+	runes := []rune{}
+	for _, r := range s {
+		runes = append(runes, r)
+	}
+
+	fmt.Printf("%q", runes)
+}
