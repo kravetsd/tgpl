@@ -24,3 +24,18 @@ func sortmap(ages map[string]int) {
 		fmt.Printf("%v \t %d\n", name, ages[name])
 	}
 }
+
+func equalmap(m1, m2 map[string]int) bool {
+	if len(m1) != len(m2) {
+		return false
+	}
+
+	for key, val := range m1 {
+		if k, ok := m2[key]; ok != true || k != val {
+			return false
+		}
+	}
+
+	return true
+
+}
