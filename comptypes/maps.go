@@ -135,3 +135,27 @@ func Utflen() {
 	}
 
 }
+
+var m = make(map[string]map[string]bool)
+
+func GraphInMao() {
+
+	fmt.Println(m)
+	AddEdge("NY", "LA")
+	fmt.Println(m)
+	fmt.Println(HasEdge("NY", "LA"))
+
+}
+
+func AddEdge(from, to string) {
+	edges := m[from]
+	if edges == nil {
+		edges = make(map[string]bool)
+		m[from] = edges
+	}
+	edges[to] = true
+}
+
+func HasEdge(from, to string) bool {
+	return m[from][to]
+}
