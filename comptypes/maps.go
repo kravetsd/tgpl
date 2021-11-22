@@ -61,3 +61,27 @@ func Dedup() {
 	}
 
 }
+
+// how we can make not comparable types to be amap keys:
+
+func checkMapCompare() {
+	var m = make(map[string]int)
+	m = Add(m, []string{"hello", "world"})
+	m = Add(m, []string{"hello", "world"})
+	m = Add(m, []string{"hello", "world", "again"})
+
+	fmt.Println(count(m, []string{"hello", "world"}))
+	fmt.Println(count(m, []string{"hello", "world", "again"}))
+	fmt.Println(m)
+}
+
+func Add(mp map[string]int, somelist []string) map[string]int {
+	mp[k(somelist)]++
+	return mp
+}
+
+func count(mp map[string]int, somelist []string) int {
+	return mp[k(somelist)]
+}
+
+func k(slice []string) string { return fmt.Sprintf("%q", slice) }
