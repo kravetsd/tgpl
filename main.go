@@ -29,5 +29,5 @@ func main() {
 	//fmt.Println(errmes.Error())
 	//basictypes.Strs()
 
-	comptypes.Dedup()
+	comptypes.Utflen()
 }
