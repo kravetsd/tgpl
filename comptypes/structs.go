@@ -1,7 +1,10 @@
 package comptypes
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -43,7 +46,21 @@ func GetPlatform(name, region, env string) *Platform {
 	return p
 }
 
-func InputPlatformData(pltf_name, region, env string) {
+func InputPlatformData() {
+
+	scanner := bufio.NewReader(os.Stdin)
+
+	fmt.Println("The platform name is: ")
+	pltf_name, _ := scanner.ReadString('\n')
+	pltf_name = strings.TrimSuffix(pltf_name, "\r\n")
+
+	fmt.Println("Region is: ")
+	region, _ := scanner.ReadString('\n')
+	region = strings.TrimSuffix(region, "\r\n")
+
+	fmt.Println("environment: ")
+	env, _ := scanner.ReadString('\n')
+	env = strings.TrimSuffix(env, "\r\n")
 
 	Platformp := GetPlatform(pltf_name, region, env)
 
