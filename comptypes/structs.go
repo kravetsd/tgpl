@@ -27,3 +27,26 @@ type Employee struct {
 	Salary    int
 	ManagerId int
 }
+
+type Platform struct {
+	Name        string
+	Region      string
+	Environment string
+}
+
+func PlatformRepoName(p *Platform) {
+	fmt.Printf("pltf-%s-%s-%s", p.Name, p.Region, p.Environment)
+}
+
+func GetPlatform(name, region, env string) *Platform {
+	p := &Platform{Name: name, Region: region, Environment: env}
+	return p
+}
+
+func InputPlatformData(pltf_name, region, env string) {
+
+	Platformp := GetPlatform(pltf_name, region, env)
+
+	PlatformRepoName(Platformp)
+
+}
