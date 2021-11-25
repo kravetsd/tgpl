@@ -74,4 +74,11 @@ var Q = Platform{Name: "name3", Region: "ny", Environment: "dev"}
 func StructCompare(p, q Platform) {
 	fmt.Println("Comparing structs with '==' sign p == q : ", p == q)
 	fmt.Println("Comparing structs field by field p.Name == q.Name : ", q.Name == p.Name && q.Environment == p.Environment && q.Region == p.Region)
+
+	// struct as a key of a map:
+	structmap := make(map[Platform]int)
+	for i := 0; i < 10; i++ {
+		structmap[Platform{"here", "I", "dev"}]++
+	}
+	fmt.Println(structmap)
 }
