@@ -9,7 +9,7 @@ import (
 func JsonBasics() {
 	fmt.Println("Hello from JSON")
 
-	data, err := json.Marshal(movies)
+	data, err := json.MarshalIndent(movies, "", "  ")
 
 	if err != nil {
 		log.Fatal("Json marshaling failed: %s", err)
