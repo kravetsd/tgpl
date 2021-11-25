@@ -29,5 +29,7 @@ func main() {
 	//fmt.Println(errmes.Error())
 	//basictypes.Strs()
 
-	comptypes.StructCompare(comptypes.P, comptypes.Q)
+	//comptypes.StructCompare(comptypes.P, comptypes.Q)
+
+	comptypes.Embstructs()
 }
