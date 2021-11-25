@@ -12,9 +12,18 @@ func JsonBasics() {
 	data, err := json.MarshalIndent(movies, "", "  ")
 
 	if err != nil {
-		log.Fatal("Json marshaling failed: %s", err)
+		log.Fatalf("Json marshaling failed: %s", err)
 	}
 	fmt.Printf("%s", data)
+
+	// unmarshaling:
+	var titles []struct{ Title string }
+
+	if err := json.Unmarshal(data, &titles); err != nil {
+		log.Fatalf("Json unmarshaling failed: %s", err)
+	}
+
+	fmt.Println(titles)
 }
 
 type Movie struct {
