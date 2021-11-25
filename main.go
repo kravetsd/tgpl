@@ -4,6 +4,7 @@ import (
 	"fmt"
 	//"github.com/kravetsd/TheGoProgrammingLanguage/basictypes"
 	//"github.com/kravetsd/TheGoProgrammingLanguage/functions"
+	//"github.com/kravetsd/TheGoProgrammingLanguage/comptypes"
 	"github.com/kravetsd/TheGoProgrammingLanguage/comptypes"
 )
 
@@ -31,5 +32,7 @@ func main() {
 
 	//comptypes.StructCompare(comptypes.P, comptypes.Q)
 
-	comptypes.Embstructs()
+	//comptypes.Embstructs()
+
+	comptypes.JsonBasics()
 }
