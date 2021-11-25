@@ -5,7 +5,11 @@ import (
 	//"github.com/kravetsd/TheGoProgrammingLanguage/basictypes"
 	//"github.com/kravetsd/TheGoProgrammingLanguage/functions"
 	//"github.com/kravetsd/TheGoProgrammingLanguage/comptypes"
-	"github.com/kravetsd/TheGoProgrammingLanguage/comptypes"
+	//"github.com/kravetsd/TheGoProgrammingLanguage/comptypes"
+	"log"
+	"os"
+
+	"github.com/kravetsd/TheGoProgrammingLanguage/github"
 )
 
 const (
@@ -34,5 +38,18 @@ func main() {
 
 	//comptypes.Embstructs()
 
-	comptypes.JsonBasics()
+	//comptypes.JsonBasics()
+
+	result, err := github.SearchIssues(os.Args[1:])
+
+	if err != nil {
+		log.Fatalf("Search Issue main failed: %s ", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("%d issues:\n", result.TotalCount)
+	for _, item := range result.Items {
+		fmt.Printf("#%-5d %9.9s %.55s\n",
+			item.Number, item.User.Login, item.Title)
+	}
 }
