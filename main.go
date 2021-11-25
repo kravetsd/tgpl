@@ -29,5 +29,5 @@ func main() {
 	//fmt.Println(errmes.Error())
 	//basictypes.Strs()
 
-	comptypes.InputPlatformData()
+	comptypes.StructCompare(comptypes.P, comptypes.Q)
 }

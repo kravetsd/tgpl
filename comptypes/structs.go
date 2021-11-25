@@ -67,3 +67,11 @@ func InputPlatformData() {
 	PlatformRepoName(Platformp)
 
 }
+
+var P = Platform{Name: "name1", Region: "ny", Environment: "dev"}
+var Q = Platform{Name: "name3", Region: "ny", Environment: "dev"}
+
+func StructCompare(p, q Platform) {
+	fmt.Println("Comparing structs with '==' sign p == q : ", p == q)
+	fmt.Println("Comparing structs field by field p.Name == q.Name : ", q.Name == p.Name && q.Environment == p.Environment && q.Region == p.Region)
+}
