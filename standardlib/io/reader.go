@@ -6,13 +6,13 @@ import (
 	"os"
 )
 
-// func main() {
-
-// 	path := os.Args[1]
-// 	io.ReaderFormFile(path)
-// }
-
 func ReaderFormFile(fpath string) {
+	// func main() {
+
+	// 	path := os.Args[1]
+	// 	io.ReaderFormFile(path)
+	// }
+
 	f, err := os.Open(fpath)
 	if err != nil {
 		panic(err)
