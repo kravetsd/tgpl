@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/kravetsd/TheGoProgrammingLanguage/interfaces"
+	"github.com/kravetsd/TheGoProgrammingLanguage/standardlib"
 )
 
 const (
@@ -48,5 +48,7 @@ func main() {
 	// 		item.Number, item.User.Login, item.Title)
 	// }
 
-	interfaces.Shopping()
+	//interfaces.Shopping()
+	envvars := standardlib.EnvVarToMap()
+	fmt.Println(envvars["Path"])
 }
