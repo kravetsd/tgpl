@@ -12,6 +12,6 @@ const (
 
 func main() {
 
-	path := os.Args[1]
-	io.ReaderFormFile(path)
+	s, b := os.Args[1], os.Args[2]
+	io.ReadFromString(s, b)
 }
