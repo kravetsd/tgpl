@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
 )
@@ -56,5 +57,18 @@ func SearchIssues(terms []string) (*IssueSearchResult, error) {
 
 	resp.Body.Close()
 	return &result, nil
+
+	res, err := github.SearchIssues(os.Args[1:])
+
+	if err != nil {
+		log.Fatalf("Search Issue main failed: %s ", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("%d issues:\n", result.TotalCount)
+	for _, item := range result.Items {
+		fmt.Printf("#%-5d %9.9s %.55s\n",
+			item.Number, item.User.Login, item.Title)
+	}
 
 }
