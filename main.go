@@ -1,9 +1,7 @@
 package main
 
 import (
-	"os"
-
-	"github.com/kravetsd/TheGoProgrammingLanguage/standardlib/io"
+	"github.com/kravetsd/TheGoProgrammingLanguage/standardlib/bytespkg"
 )
 
 const (
@@ -11,7 +9,5 @@ const (
 )
 
 func main() {
-
-	s, b := os.Args[1], os.Args[2]
-	io.ReadFromString(s, b)
+	bytespkg.BasicBytes()
 }
