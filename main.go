@@ -9,5 +9,5 @@ const (
 )
 
 func main() {
-	bytespkg.BasicBytes()
+	bytespkg.BasicEncoding()
 }
