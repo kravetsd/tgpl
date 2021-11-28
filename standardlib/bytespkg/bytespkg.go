@@ -3,6 +3,7 @@ package bytespkg
 import (
 	"bytes"
 	"fmt"
+	"os"
 	"unicode/utf8"
 )
 
@@ -75,6 +76,23 @@ func Buffers() {
 	fmt.Println(b.ReadByte())
 	fmt.Println(b.ReadByte())
 	fmt.Println(b.Bytes())
-	fmt.Printf("%s", b.Bytes())
+	fmt.Printf("%s\n", b.Bytes())
+
+	b.WriteString(" appended ◺ to the end of string")
+	fmt.Printf("%s\n", b.Bytes())
+	fmt.Println(b.ReadByte())
+	fmt.Println(b.ReadByte())
+	fmt.Printf("%s\n", b.Bytes())
+
+	fmt.Println(b.ReadByte())
+	fmt.Println(b.ReadByte())
+	fmt.Printf("%s\n", b.Bytes())
+
+	//since file is an interface io.Writer and stdout is a file too we can flush buffer into the file:
+
+	b.WriteTo(os.Stdout)
+	os.Stdout.WriteString("\n") //writing nrwline into stdout file
+	//checking the lengt of the buffer:
+	fmt.Println(b.Len())
 
 }
