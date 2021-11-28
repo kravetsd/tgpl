@@ -44,3 +44,37 @@ func BasicEncoding() {
 
 	fmt.Println(string(runes))
 }
+
+func Buffers() {
+	var b bytes.Buffer // needs no initialization
+	b.Write([]byte("Hello, ◺ this is string"))
+	for i := 0; i < 5; i++ {
+		fmt.Println(b.ReadByte())
+	}
+
+	fmt.Println(&b) //here we can see that someS first byte already read and triangle no more visible
+
+	for i := 0; i < 3; i++ {
+
+		rn, len, _ := b.ReadRune()
+		// here we can see that Readrune reads erune by rune from the buffer.l
+		fmt.Printf("%q, %d \n", rn, len)
+	}
+	fmt.Printf("%s\n", b.Bytes())
+
+	// Now we are testing unread runes NOTE THE ONLY LAST RUNE CAN BE UNREADED:
+	for i := 0; i < 10; i++ {
+
+		b.UnreadRune()
+		// here we can make unread operation for previously read runes:
+	}
+	fmt.Printf("%s\n", b.Bytes())
+
+	//read a couple of bytes and see how it got changed: using Bytes function for buffer
+	fmt.Println(b.Bytes())
+	fmt.Println(b.ReadByte())
+	fmt.Println(b.ReadByte())
+	fmt.Println(b.Bytes())
+	fmt.Printf("%s", b.Bytes())
+
+}
