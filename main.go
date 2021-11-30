@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kravetsd/TheGoProgrammingLanguage/standardlib/bytespkg"
+	"github.com/kravetsd/TheGoProgrammingLanguage/standardlib/encoding"
 )
 
 const (
@@ -9,5 +9,5 @@ const (
 )
 
 func main() {
-	bytespkg.Buffers()
+	encoding.MarshalMe()
 }
