@@ -29,6 +29,7 @@ func Sshbasic(user string, remoteAddress, remotePort string, key []byte) {
 		Auth: []ssh.AuthMethod{
 			ssh.PublicKeys(signer),
 		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
 	// Implementing a new ssh client connection:
