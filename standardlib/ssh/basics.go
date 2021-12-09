@@ -9,7 +9,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-func sshbasic(user string, remoteAddress, remotePort string, key []byte) {
+func Sshbasic(user string, remoteAddress, remotePort string, key []byte) {
 
 	// FROM THE DOCUMETNATION PAGE:
 	// An SSH client is represented with a ClientConn.
