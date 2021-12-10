@@ -7,6 +7,7 @@ import (
 	"net"
 
 	"golang.org/x/crypto/ssh"
+	"golang.org/x/crypto/ssh/knownhosts"
 )
 
 func Sshbasic(user string, remoteAddress, remotePort string, command string, key []byte) {
@@ -23,14 +24,18 @@ func Sshbasic(user string, remoteAddress, remotePort string, command string, key
 		log.Fatal("Error with parsing private key : ", err)
 	}
 
+	hostKeyCallback, err := knownhosts.New("/home/dkravets/.ssh/known_hosts")
+	if err != nil {
+		log.Fatalf("known hostst, hostkeycallback error : %s", err)
+	}
+
 	config := &ssh.ClientConfig{
 		Config: ssh.Config{},
 		User:   user,
 		Auth: []ssh.AuthMethod{
 			ssh.PublicKeys(signer),
 		},
-		// TODO: Need to handle hostkeycallback and remove ssh.InsecureIgnoreHostKey()
-		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+		HostKeyCallback: hostKeyCallback,
 	}
 
 	// Implementing a new ssh client connection:
@@ -42,7 +47,7 @@ func Sshbasic(user string, remoteAddress, remotePort string, command string, key
 	}
 
 	// establishing connection:
-	connection, newchan, requestchan, err := ssh.NewClientConn(c, remoteAddress, config)
+	connection, newchan, requestchan, err := ssh.NewClientConn(c, fmt.Sprintf(remoteAddress+":"+remotePort), config)
 	if err != nil {
 		log.Fatalf("Error to establich ssh connection to %s : %s", remoteAddress, err)
 	}
