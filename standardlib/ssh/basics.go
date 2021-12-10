@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/knownhosts"
@@ -24,7 +25,7 @@ func Sshbasic(user string, remoteAddress, remotePort string, command string, key
 		log.Fatal("Error with parsing private key : ", err)
 	}
 
-	hostKeyCallback, err := knownhosts.New("/home/dkravets/.ssh/known_hosts")
+	hostKeyCallback, err := knownhosts.New(os.Getenv("HOME") + "/.ssh/known_hosts")
 	if err != nil {
 		log.Fatalf("known hostst, hostkeycallback error : %s", err)
 	}
