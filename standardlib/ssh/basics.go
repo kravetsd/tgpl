@@ -9,7 +9,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-func Sshbasic(user string, remoteAddress, remotePort string, key []byte) {
+func Sshbasic(user string, remoteAddress, remotePort string, command string, key []byte) {
 
 	// FROM THE DOCUMETNATION PAGE:
 	// An SSH client is represented with a ClientConn.
@@ -59,7 +59,7 @@ func Sshbasic(user string, remoteAddress, remotePort string, key []byte) {
 	var b bytes.Buffer
 	session.Stdout = &b
 
-	if err := session.Run("/usr/bin/whoami"); err != nil {
+	if err := session.Run(command); err != nil {
 		log.Fatal("Failed to run: " + err.Error())
 	}
 	fmt.Println(b.String())

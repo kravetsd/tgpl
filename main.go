@@ -17,6 +17,7 @@ func main() {
 	remoteAddress := flag.String("ip", "", "specify an ip address to ssh")
 	remotePort := flag.String("port", "22", "specify a port for ssh")
 	privateKeyPath := flag.String("path", "", "specify a port for ssh")
+	cmd := flag.String("command", "", "specify a port for ssh")
 
 	flag.Parse()
 
@@ -25,5 +26,5 @@ func main() {
 		log.Fatalf("Open private key file : %s", err)
 	}
 
-	ssh.Sshbasic(*user, *remoteAddress, *remotePort, key)
+	ssh.Sshbasic(*user, *remoteAddress, *remotePort, *cmd, key)
 }
