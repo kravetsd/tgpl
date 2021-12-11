@@ -1,7 +1,7 @@
 package ssh
 
 import (
-	"bytes"
+	"bufio"
 	"fmt"
 	"log"
 	"net"
@@ -62,11 +62,58 @@ func Sshbasic(user string, remoteAddress, remotePort string, command string, key
 	// once session is created we can execute command:
 
 	// creating a buffer for session's output storage
-	var b bytes.Buffer
-	session.Stdout = &b
+	//var b bytes.Buffer
+	//session.Stdout = &b
+	//
+	//if err := session.Run(command); err != nil {
+	//	log.Fatal("Failed to run: " + err.Error())
+	//}
+	//fmt.Println(b.String())
 
-	if err := session.Run(command); err != nil {
+	// Associating stdin,out and err with remote session process
+	stdin, err := session.StdinPipe()
+	if err != nil {
+		log.Fatalf("StdinPipe error: %s", err)
+	}
+	stdout, err := session.StdoutPipe()
+	if err != nil {
+		log.Fatalf("StdoutPipe error: %s", err)
+	}
+	stderr, err := session.StderrPipe()
+	if err != nil {
+		log.Fatalf("StderrPipe error: %s", err)
+	}
+
+	if err := session.Shell(); err != nil {
 		log.Fatal("Failed to run: " + err.Error())
 	}
-	fmt.Println(b.String())
+
+	// creating channel:
+	//wr := make(chan []byte, 10)
+
+	go func() {
+		for {
+			out := bufio.NewScanner(stdout)
+			out.Scan()
+			fmt.Println(out.Text())
+		}
+	}()
+
+	go func() {
+		for {
+			out := bufio.NewScanner(stderr)
+			out.Scan()
+			fmt.Println(out.Text())
+		}
+	}()
+
+	for {
+		in := bufio.NewScanner(os.Stdin)
+		in.Scan()
+		stdin.Write([]byte(in.Text() + "\n"))
+	}
+
+	//if err := session.Run(command); err != nil {
+	//
+	//}
 }
